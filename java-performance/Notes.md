@@ -99,3 +99,14 @@ Causing and Disabling Explicit GC:
 * `-XX:+PrintGCDetails` print detailed gc log
 * `-XX:+PrintGCDateStamps` `-XX:+PrintGCTimeStamps` print date stamps / time stamps in gc log
 * `-XX:+UseGCLogFileRotation -XX:NumberOfGCLogFiles=N -XX:GCLogFileSize=N` GC log rotation settings
+* `-Xloggc:filename`
+
+### Throughput Collector
+
+Adaptive sizing in the throughput collector will resize the heap (and the generations) in order to meet its pause time goals. Those goals are set with these flags:
+
+```-XX:MaxGCPauseMillis=N and -XX:GCTimeRatio=N```
+
+$$GCTimeRatio = \frac{Throughput}{1-Throughput}$$
+
+For a throughput goal of 95% (0.95), this equation yields a GCTimeRatio of 19. (which means application spend 5% of time doing GC)
