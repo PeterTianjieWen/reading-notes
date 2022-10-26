@@ -203,7 +203,8 @@ For a throughput goal of 95% (0.95), this equation yields a GCTimeRatio of 19. (
 [Times: user=0.00 sys=0.00, real=0.00 secs]
 ```
 Problems after cycle
-* Concurrent mode failure -> Full GC
+* Concurrent mode failure: When a young collection occurs and there isn’t enough room in the old generation to
+hold all the objects that are expected to be promoted -> Full GC
 ```
 267.006: [GC 267.006: [ParNew: 629120K->629120K(629120K), 0.0000200 secs]
 267.006: [CMS267.350: [CMS-concurrent-mark: 2.683/2.804 secs]
